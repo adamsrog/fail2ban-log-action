@@ -9,7 +9,8 @@ Default all ban log file is `/var/log/fail2ban-bans-all.log`.
 
 ## Installation
 * Move `log.conf` to `/etc/fail2ban/actions.d/`.
-* Move `send-and-clear.sh` to `/etc/fail2ban/`.
+* Move `send-and-clear.sh` to `/etc/fail2ban/` (or where ever else you want it).
+	* Make executable: `chmod +x send-and-clear.sh`
 	* Setup a cron job to run each night at midnight: `crontab -e`
 		* `0 0 * * * /etc/fail2ban/send-and-clear.sh >/dev/null 2>&1`
 	* Configure email addresses the summary is sent to and from.

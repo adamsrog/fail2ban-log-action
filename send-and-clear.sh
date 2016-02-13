@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This is a cronjob meant to be run each day at midnight:
-# 0 0 * * * /etc/fail2ban/logs/send-and-clear.sh >/dev/null 2>&1
+# 0 0 * * * /etc/fail2ban/send-and-clear.sh >/dev/null 2>&1
 #
 # Sends the specified address the ban list and generates a summary
 # based on the specified jails. Appends the all-bans log and then
