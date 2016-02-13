@@ -4,17 +4,20 @@ solution for receiving a nightly email that provides a full ban list and a
 summary of the bans for each jail.
 
 Default ban log file is `/var/log/fail2ban-bans.log`.
+
 Default all ban log file is `/var/log/fail2ban-bans-all.log`.
 
 ## Installation
 * Move `log.conf` to `/etc/fail2ban/actions.d/`.
 * Move `send-and-clear.sh` to `/etc/fail2ban/`.
 	* Setup a cron job to run each night at midnight: `crontab -e`
-		*  0 0 * * * /etc/fail2ban/send-and-clear.sh >/dev/null 2>&1
-	* Configure email address the summary is sent to and from.
-	* Configure jails to monitor (use `service fail2ban status` to see active jails)
+		* `0 0 * * * /etc/fail2ban/send-and-clear.sh >/dev/null 2>&1`
+	* Configure email addresses the summary is sent to and from.
+		* `SENDTO=you@you.com`
+		* `SENDFROM=your@server.com`
+	* Configure jails to monitor (use `service fail2ban status` to see active jails) by adding or removing from the `JAILS` array.
 * Edit the `jail.local` file to use the log action.
-	* action = log[name=%(__name__)s]
+	* `action = log[name=%(__name__)s]`
 
 ## Sample Email
 ```
